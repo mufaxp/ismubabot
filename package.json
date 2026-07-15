@@ -1,0 +1,27 @@
+{
+  "name": "ismubabot",
+  "version": "1.0.0",
+  "description": "Aplikasi chatbot Ismuba SMA Muhammadiyah 3 Jakarta",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mufaxp/ismubabot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mufaxp/ismubabot/issues"
+  },
+  "homepage": "https://github.com/mufaxp/ismubabot#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.23.0",
+    "node-telegram-bot-api": "^1.2.0"
+  }
+}
