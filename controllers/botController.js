@@ -35,19 +35,35 @@ const handleUpdate = (req, res) => {
         if (data === 'salam') {
             bot.sendMessage(chatId, 'Wa\'alaikumussalam warahmatullahi wabarakatuh.');
             // Optional: kita kirim ulang tombol salamnya agar tetap muncul
-            sendSalamButton(chatId);
+            sendRoleMenu(chatId);
+        }
+
+            // Handler untuk tombol Guru
+        if (data === 'role_guru') {
+            bot.answerCallbackQuery(update.callback_query.id);
+            bot.sendMessage(chatId, 'Fitur untuk Guru sedang dalam pengembangan.\n\n(Menu Guru akan segera hadir!)');
+            // Kirim ulang menu agar user bisa pilih lagi
+            sendRoleMenu(chatId);
+        }
+
+        // Handler untuk tombol Siswa
+        if (data === 'role_siswa') {
+            bot.answerCallbackQuery(update.callback_query.id);
+            bot.sendMessage(chatId, 'Fitur untuk Siswa sedang dalam pengembangan.\n\n(Menu Siswa akan segera hadir!)');
+            // Kirim ulang menu agar user bisa pilih lagi
+            sendRoleMenu(chatId);
         }
     }
 };
 
 // Fungsi kirim pesan sambutan + tombol salam
 const sendWelcomeMessage = (chatId) => {
-    const message = `Assalamu'alaikum, selamat datang! 🌟\n\nKlik tombol di bawah untuk menjawab salam atau memulai interaksi.`;
+    const message = `Assalamu'alaikum, selamat datang!`;
     
     const options = {
         reply_markup: {
             inline_keyboard: [
-                [{ text: '🕌 Wa\'alaikumussalam', callback_data: 'salam' }]
+                [{ text: 'Wa\'alaikumussalam', callback_data: 'salam' }]
             ]
         }
     };
@@ -55,16 +71,19 @@ const sendWelcomeMessage = (chatId) => {
     bot.sendMessage(chatId, message, options);
 };
 
-// Fungsi kirim hanya tombol salam (agar tetap muncul setelah balasan)
-const sendSalamButton = (chatId) => {
+// Fungsi kirim pilihan role
+const sendRoleMenu = (chatId) => {
     const options = {
         reply_markup: {
             inline_keyboard: [
-                [{ text: '🕌 Assalamu\'alaikum', callback_data: 'salam' }]
+                [
+                    { text: 'Guru', callback_data: 'role_guru' },
+                    { text: 'Siswa', callback_data: 'role_siswa' }
+                ]
             ]
         }
     };
-    bot.sendMessage(chatId, 'Klik tombol di bawah untuk menjawab salam lagi:', options);
+    bot.sendMessage(chatId, 'Silakan pilih menu berikut:', options);
 };
 
 module.exports = { setBot, handleUpdate };
