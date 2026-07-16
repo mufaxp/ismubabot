@@ -20,6 +20,11 @@ app.post(`/webhook/${process.env.WEBHOOK_SECRET}`, (req, res) => {
     botController.handleUpdate(req, res);
 });
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.json({ status: 'ok', bot: 'Ismuba Bot', timestamp: new Date().toISOString() });
+});
+
 // Jalankan server
 app.listen(port, () => {
     console.log(`🚀 Bot Ismuba berjalan di port ${port}`);
