@@ -33,8 +33,6 @@ const handleUpdate = (req, res) => {
         bot.answerCallbackQuery(update.callback_query.id);
 
         if (data === 'salam') {
-            bot.sendMessage(chatId, 'Wa\'alaikumussalam warahmatullahi wabarakatuh.');
-            // Optional: kita kirim ulang tombol salamnya agar tetap muncul
             sendRoleMenu(chatId);
         }
 
